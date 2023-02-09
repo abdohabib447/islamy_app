@@ -131,11 +131,11 @@ class quran extends StatelessWidget {
             height: 2,
             color: Theme.of(context).primaryColor,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
               'Chapter Name',
-              style: TextStyle(fontSize: 26),
+              style: Theme.of(context).textTheme.headline6,
               textAlign: TextAlign.center,
             ),
           ),

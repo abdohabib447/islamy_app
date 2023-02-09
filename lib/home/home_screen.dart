@@ -3,7 +3,11 @@ import 'package:islami_app2/home/hadeth/hadeth_tap.dart';
 import 'package:islami_app2/home/quran/quran_tap.dart';
 import 'package:islami_app2/home/radio/radio_tap.dart';
 import 'package:islami_app2/home/sebha/sebha_tap.dart';
+import 'package:islami_app2/home/setting/setting.dart';
 import 'package:islami_app2/my_theme_data.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/sittings_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'home screen';
@@ -13,14 +17,17 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int index = 0;
-  var taps = [quran(), hadeth(), sebha(), radio()];
+  var taps = [quran(), hadeth(), sebha(), radio(), Setting()];
 
   @override
   Widget build(BuildContext context) {
+    var settingProvider = Provider.of<SittingProvider>(context);
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/images/main_bacjround.png'),
+            image: AssetImage(settingProvider.currentTheme == ThemeMode.light
+                ? 'assets/images/main_bacjround.png'
+                : 'assets/images/bg.png'),
             fit: BoxFit.fill),
       ),
       child: Scaffold(
@@ -58,7 +65,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: ImageIcon(
                     AssetImage('assets/images/radio.png'),
                   ),
-                  label: 'radio')
+                  label: 'radio'),
+              const BottomNavigationBarItem(
+                  icon: Icon(Icons.settings), label: "setting"),
             ]),
         body: taps[index],
       ),
