@@ -9,7 +9,7 @@ class SurasTitleWidget extends StatelessWidget {
       margin: const EdgeInsets.all(5),
       child: Text(
         text,
-        style: const TextStyle(fontSize: 25),
+        style: Theme.of(context).textTheme.headline6,
         textAlign: TextAlign.center,
       ),
     );
