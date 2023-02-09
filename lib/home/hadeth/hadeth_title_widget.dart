@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
-class SurasTitleWidget extends StatelessWidget {
-  String text;
-  SurasTitleWidget(this.text);
+import '../../model/hadeth_model_attribute.dart';
+
+class HadethTitile extends StatelessWidget {
+  Hadeth hadeth;
+  HadethTitile(this.hadeth);
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(5),
       child: Text(
-        text,
-        style: Theme.of(context).textTheme.headline6,
+        hadeth.title,
+        style: Theme.of(context).textTheme.headline4,
         textAlign: TextAlign.center,
       ),
     );
