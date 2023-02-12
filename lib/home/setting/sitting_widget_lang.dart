@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../provider/sittings_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-class SittingScreenWidget extends StatefulWidget {
-  const SittingScreenWidget({Key? key}) : super(key: key);
+import '../../provider/sittings_provider.dart';
+
+class SittingScreenWidgetLang extends StatefulWidget {
+  const SittingScreenWidgetLang({Key? key}) : super(key: key);
 
   @override
-  State<SittingScreenWidget> createState() => _SittingScreenWidgetState();
+  State<SittingScreenWidgetLang> createState() => _SittingScreenWidgetLangState();
 }
 
-class _SittingScreenWidgetState extends State<SittingScreenWidget> {
+class _SittingScreenWidgetLangState extends State<SittingScreenWidgetLang> {
   @override
   Widget build(BuildContext context) {
     var settingProvider = Provider.of<SittingProvider>(context);
@@ -27,11 +27,11 @@ class _SittingScreenWidgetState extends State<SittingScreenWidget> {
                 border: Border.all(color: (Theme.of(context).primaryColor))),
             child: InkWell(
                 onTap: () {
-                  settingProvider.changeTheme(ThemeMode.light);
+                  settingProvider.getMainLang('ar');
                 },
-                child: settingProvider.isDarkMode()
-                    ? usSelectedTheme(AppLocalizations.of(context)!.light)
-                    : isSelectedTheme(AppLocalizations.of(context)!.light)),
+                child: settingProvider.isEnglish()
+                    ? usSelectedlang(AppLocalizations.of(context)!.ar)
+                    : isSelectedLang(AppLocalizations.of(context)!.ar)),
           ),
           const SizedBox(
             height: 20,
@@ -44,11 +44,11 @@ class _SittingScreenWidgetState extends State<SittingScreenWidget> {
                 border: Border.all(color: (Theme.of(context).primaryColor))),
             child: InkWell(
                 onTap: () {
-                  settingProvider.changeTheme(ThemeMode.dark);
+                  settingProvider.getMainLang('en');
                 },
-                child: settingProvider.isDarkMode()
-                    ? isSelectedTheme(AppLocalizations.of(context)!.dark)
-                    : usSelectedTheme(AppLocalizations.of(context)!.dark)),
+                child: settingProvider.isEnglish()
+                    ? isSelectedLang(AppLocalizations.of(context)!.en)
+                    : usSelectedTheme(AppLocalizations.of(context)!.en)),
           ),
         ],
       ),
@@ -63,7 +63,7 @@ class _SittingScreenWidgetState extends State<SittingScreenWidget> {
           title,
           style: Theme.of(context).textTheme.subtitle2,
         ),
-        const Icon(Icons.brightness_1),
+        const Icon(Icons.check),
       ],
     );
   }
@@ -71,6 +71,22 @@ class _SittingScreenWidgetState extends State<SittingScreenWidget> {
   Widget usSelectedTheme(String title) {
     return Text(
       title,
+      style: Theme.of(context).textTheme.subtitle2,
+    );
+  }
+  Widget isSelectedLang(String lang){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+      Text(lang , style: Theme.of(context).textTheme.subtitle2,),
+      Icon(Icons.check),
+      ],
+    );
+  }
+  Widget usSelectedlang(String lang) {
+    return Text(
+      lang,
       style: Theme.of(context).textTheme.subtitle2,
     );
   }
