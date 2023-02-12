@@ -1,0 +1,15 @@
+{
+"app_title" : "Ialamy",
+"aura_name" : "Chapter Name",
+"quran" : "Quran",
+"hadeth" : "Ahadeth",
+"mention" : "Sepha",
+"radio": "Radio",
+"setting": "Setting",
+"en": "English",
+"ar": "Arabic",
+"light": "Light",
+"dark": "Dark",
+"theme" : "Theme",
+"lang" : "Language"
+}

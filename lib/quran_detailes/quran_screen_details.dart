@@ -52,7 +52,7 @@ class _SuraDetailsState extends State<SuraDetails> {
                     },
                     separatorBuilder: (_, index) => Container(
                           height: 1,
-                          color: Theme.of(context).primaryColor,
+                          color: Colors.white,
                         ),
                     itemCount: suraLines.length),
               ),
