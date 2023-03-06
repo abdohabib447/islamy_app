@@ -26,8 +26,8 @@ class _radioState extends State<radio> {
     super.initState();
     fetchRadio = fetchRadioApiData();
     audioPlayer = AudioPlayer();
-
   }
+
   late AudioPlayer audioPlayer;
   play(String url) async {
     await audioPlayer.play(UrlSource(url));
@@ -36,6 +36,7 @@ class _radioState extends State<radio> {
   pauase() async {
     await audioPlayer.pause();
   }
+
   @override
   void dispose() {
     super.dispose();
@@ -46,7 +47,7 @@ class _radioState extends State<radio> {
   Widget build(BuildContext context) {
     return FutureBuilder<RadioResponse>(
         future: fetchRadio,
-        builder: ((BuildContext context,AsyncSnapshot<dynamic> snapshot) {
+        builder: ((BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
@@ -66,20 +67,17 @@ class _radioState extends State<radio> {
                         scrollDirection: Axis.horizontal,
                         itemCount: snapshot.data!.radios!.length,
                         itemBuilder: (context, index) {
-                          return RadioControler(radio : snapshot.data.radios[index] ,
-                          play:  play(snapshot.data.radios[index].url ?? ' '),
-                            pause:pauase,
+                          return RadioControler(
+                            radio: snapshot.data.radios[index],
+                            play: play(snapshot.data.radios[index].url ?? ' '),
+                            pause: pauase,
                           );
                         },
-                      )
-                  ),
-
+                      )),
                 ],
               ),
             );
           }
-        }
-        )
-    );
+        }));
   }
 }

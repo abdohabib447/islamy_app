@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-
 import '../../api_model/RadioResponse.dart';
-import 'package:audioplayers/audioplayers.dart';
 
 class RadioControler extends StatefulWidget {
   late Radios radio;
-  Function play ;
-  Function pause ;
-  RadioControler({required this.radio , required this.play , required this.pause});
+  Function play;
+  Function pause;
+  RadioControler(
+      {required this.radio, required this.play, required this.pause});
   @override
   State<RadioControler> createState() => _RadioControlerState();
 }
