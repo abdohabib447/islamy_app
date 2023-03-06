@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SittingProvider extends ChangeNotifier {
   ThemeMode currentTheme = ThemeMode.system;
   String currentLang = 'en';
-  void changeTheme(ThemeMode newTheme) {
+  void changeTheme(ThemeMode newTheme) async{
+    final prefs = await SharedPreferences.getInstance();
     currentTheme = newTheme;
+    await prefs.setString('theme', currentTheme == ThemeMode.dark ? 'dark' : 'light');
     notifyListeners();
   }
 //'assets/images/main_bacjround.png'
-  getMainLang(String newLang){
+  getMainLang(String newLang)async{
+    final prefs = await SharedPreferences.getInstance();
     currentLang = newLang;
+    await prefs.setString('lang', currentLang);
     notifyListeners();
   }
   bool isEnglish() {

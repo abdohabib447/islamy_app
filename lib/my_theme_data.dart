@@ -34,7 +34,9 @@ class MyTheme {
           size: 25,
           color: Colors.white,
         ),
-      ));
+      ),
+
+  );
   static var themeDark = ThemeData(
       textTheme: const TextTheme(
           headline4: (TextStyle(fontSize: 22, color: Color(0xffFACC1D))),

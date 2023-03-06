@@ -4,7 +4,6 @@ import 'package:islami_app2/home/quran/quran_tap.dart';
 import 'package:islami_app2/home/radio/radio_tap.dart';
 import 'package:islami_app2/home/sebha/sebha_tap.dart';
 import 'package:islami_app2/home/setting/setting.dart';
-import 'package:islami_app2/my_theme_data.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
