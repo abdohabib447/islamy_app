@@ -1,0 +1,11 @@
+{
+  "islamy": "اسلامي" ,
+  "sura_name": "اسم السوره",
+  "hadeth_name": "الاحاديث",
+  "quran": "quran",
+  "number_of_tasbeh": "عدد التسبيحات",
+  "dark": "داكن",
+  "light": "فاتح",
+  "english": "انجليزي",
+  "arabic": "عربي"
+}
