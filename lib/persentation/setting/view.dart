@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:islamy_app/app/app_string/AppString.dart';
 import 'package:islamy_app/domain/setting-provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingView extends StatelessWidget {
+  //final SharedPreferences prefs = await SharedPreferences.getInstance();
+
   @override
   Widget build(BuildContext context) {
     var settingProvider = Provider.of<SettingProvider>(context);

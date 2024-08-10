@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islamy_app/app/app_theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingProvider extends ChangeNotifier {
   ThemeMode myTheme = ThemeMode.light;
@@ -8,8 +9,10 @@ class SettingProvider extends ChangeNotifier {
     myTheme = newTheme;
     notifyListeners();
   }
-  void changeMyLang(String newLocal){
+  void changeMyLang(String newLocal)async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     local = newLocal;
+    prefs.setString('languageCode', newLocal);
     notifyListeners();
   }
 
@@ -27,4 +30,11 @@ class SettingProvider extends ChangeNotifier {
         : 'Dark';
   }
 
+  void _loadPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    //_isDarkMode = prefs.getBool('isDarkMode') ?? false;
+    String? languageCode = prefs.getString('languageCode');
+    local = (languageCode ?? 'en');
+    notifyListeners();
+  }
 }
